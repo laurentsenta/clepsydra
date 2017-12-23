@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import NewtabApp from './NewtabApp';
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+ReactDOM.render(<NewtabApp/>, document.getElementById('root'));
