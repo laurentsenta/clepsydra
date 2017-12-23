@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import './NewtabApp.css';
 import { connect } from 'react-redux'
 import { justClick, storageInit } from './actions'
+import UserForm from "./UserForm"
 
 const Clicked = ({ onClick, clicked }) => (
   <h2 onClick={onClick}>Clicked: {clicked ? "Yes" : "No"}</h2>
@@ -26,6 +27,7 @@ class NewtabAppRaw extends Component {
           <h1 className="App-title">Welcome</h1>
         </header>
         <Clicked onClick={this.props.onClick} clicked={this.props.clicked}/>
+        <UserForm/>
         <p className="App-intro">
           This is the New Tab Page
         </p>
