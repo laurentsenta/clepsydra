@@ -15,5 +15,6 @@
     "newtab": "newtab.html"
   },
   "permissions": [
+    "storage"
   ]
 }

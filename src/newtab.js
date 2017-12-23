@@ -1,6 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import NewtabApp from './NewtabApp';
+import NewtabApp from './newtab/NewtabApp';
 
-ReactDOM.render(<NewtabApp/>, document.getElementById('root'));
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import reducers from './newtab/reducers'
+
+let store = createStore(reducers)
+
+ReactDOM.render(
+  <Provider store={store}>
+    <NewtabApp/>
+  </Provider>,
+  document.getElementById('root')
+)
