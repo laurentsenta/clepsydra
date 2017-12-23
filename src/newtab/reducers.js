@@ -1,21 +1,21 @@
-import { combineReducers } from 'redux'
-import { JUST_CLICK } from "./actions"
+import { JUST_CLICK, STORAGE_INIT } from "./actions"
+
+const STATE_VOID = 'VOID'
+const STATE_LOADING = 'LOADING'
+const STATE_READY = 'READY'
 
 const initialState = {
-  clicked: false
+  clicked: false,
+  storageState: STATE_VOID
 }
 
-function clickApp(state = initialState, action) {
+export default (state = initialState, action) => {
   switch (action.type) {
     case JUST_CLICK:
       return { ...state, clicked: true }
+    case STORAGE_INIT:
+      return { ...state, ...action.payload, storageState: STATE_READY }
     default:
       return state
   }
 }
-
-export default combineReducers(
-  {
-    click: clickApp
-  }
-)

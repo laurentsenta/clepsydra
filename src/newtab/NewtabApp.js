@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import './NewtabApp.css';
 import { connect } from 'react-redux'
-import { justClick } from './actions'
+import { justClick, storageInit } from './actions'
 
 const Clicked = ({ onClick, clicked }) => (
   <h2 onClick={onClick}>Clicked: {clicked ? "Yes" : "No"}</h2>
@@ -15,16 +15,19 @@ Clicked.propTypes = {
 
 
 class NewtabAppRaw extends Component {
+  componentDidMount() {
+    this.props.init()
+  }
+
   render() {
     return (
       <div className="NewtabApp">
         <header className="App-header">
           <h1 className="App-title">Welcome</h1>
         </header>
+        <Clicked onClick={this.props.onClick} clicked={this.props.clicked}/>
         <p className="App-intro">
           This is the New Tab Page
-
-          <Clicked onClick={this.props.onClick} clicked={this.props.clicked}/>
         </p>
       </div>
     );
@@ -33,12 +36,15 @@ class NewtabAppRaw extends Component {
 
 const mapStateToProps = state => {
   return {
-    clicked: state.click.clicked
+    clicked: state.clicked
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
+    init: () => {
+      dispatch(storageInit())
+    },
     onClick: () => {
       dispatch(justClick())
     }
