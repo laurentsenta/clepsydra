@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-import './NewtabApp.css';
+import './App.css';
 import { connect } from 'react-redux'
 import { justClick, storageInit } from './actions'
 import UserForm from "./UserForm"
@@ -15,14 +15,14 @@ Clicked.propTypes = {
 }
 
 
-class NewtabAppRaw extends Component {
+class AppRaw extends Component {
   componentDidMount() {
     this.props.init()
   }
 
   render() {
     return (
-      <div className="NewtabApp">
+      <div className="App">
         <header className="App-header">
           <h1 className="App-title">Welcome</h1>
         </header>
@@ -53,9 +53,9 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const NewtabApp = connect(
+const App = connect(
   mapStateToProps,
   mapDispatchToProps
-)(NewtabAppRaw)
+)(AppRaw)
 
-export default NewtabApp;
+export default App;
