@@ -5,8 +5,8 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'remote-redux-devtools';
 import { createForms } from 'react-redux-form';
 
-const initialUserState = {
-  birthDate: '01/01/1980',
+export const initialUserState = {
+  birthDate: '1980-08-08',
   lifeExpectancy: 71
 };
 
@@ -29,7 +29,7 @@ export default createStore(
   composeRoot(
     reducers,
     createForms({
-      user: initialUserState,
+      //user: initialUserState,
     })
   ),
   composeEnhancers(applyMiddleware(thunk))

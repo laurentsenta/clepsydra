@@ -1,4 +1,5 @@
 /* global chrome */
+
 export const JUST_CLICK = 'JUST_CLICK'
 export const STORAGE_INIT = 'STORAGE_INIT'
 
@@ -21,14 +22,26 @@ export const storageInit = () => {
           })
 
         // TODO: update not init
-        dispatch({ type: STORAGE_INIT, r })
+        dispatch({ type: STORAGE_INIT, payload: r })
       }
     )
 
     chrome.storage.sync.get({
-        'clicked': false
+        'clicked': false,
+        'user.birthDate': '08-08-1980',
+        'user.lifeExpectancy': 71
       },
       (payload) => dispatch({ type: STORAGE_INIT, payload })
+    )
+  }
+}
+
+export const storageUpdate = (values) => {
+  return (dispatch) => {
+    chrome.storage.sync.set(values,
+      () => {
+        console.log('DONE')
+      }
     )
   }
 }
