@@ -2,12 +2,12 @@ import React from 'react';
 import { applyMiddleware, createStore } from 'redux'
 import reducers from './reducers'
 import thunk from 'redux-thunk'
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from 'remote-redux-devtools';
 import { createForms } from 'react-redux-form';
 
 const initialUserState = {
-  firstName: '',
-  lastName: ''
+  birthDate: '01/01/1980',
+  lifeExpectancy: 71
 };
 
 function composeRoot(root, rest) {
@@ -23,6 +23,8 @@ function composeRoot(root, rest) {
   }
 }
 
+const composeEnhancers = composeWithDevTools({ realtime: true, port: 8096 });
+
 export default createStore(
   composeRoot(
     reducers,
@@ -30,6 +32,6 @@ export default createStore(
       user: initialUserState,
     })
   ),
-  composeWithDevTools(applyMiddleware(thunk))
+  composeEnhancers(applyMiddleware(thunk))
 )
 

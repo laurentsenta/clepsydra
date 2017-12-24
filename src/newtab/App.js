@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import './App.css';
 import { connect } from 'react-redux'
 import { justClick, storageInit } from './actions'
-import UserForm from "./UserForm"
+import { BirthDateForm, LifeExpectancyForm } from "./BirthDateForm"
 
 const Clicked = ({ onClick, clicked }) => (
   <h2 onClick={onClick}>Clicked: {clicked ? "Yes" : "No"}</h2>
@@ -27,7 +27,8 @@ class AppRaw extends Component {
           <h1 className="App-title">Welcome</h1>
         </header>
         <Clicked onClick={this.props.onClick} clicked={this.props.clicked}/>
-        <UserForm/>
+        <BirthDateForm dispatch={this.props.dispatch}/>
+        <LifeExpectancyForm dispatch={this.props.dispatch}/>
         <p className="App-intro">
           This is the New Tab Page
         </p>
