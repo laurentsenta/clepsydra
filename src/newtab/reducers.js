@@ -1,4 +1,6 @@
 import set from 'lodash.set'
+import cloneDeep from 'lodash.clonedeep'
+
 import { JUST_CLICK, STORAGE_INIT } from "./actions"
 
 const STATE_VOID = 'VOID'
@@ -7,12 +9,13 @@ const STATE_READY = 'READY'
 
 const initialState = {
   clicked: false,
+  introductionCompleted: false,
   storageState: STATE_VOID,
   user: { lifeExpectancy: undefined, birthDate: undefined }
 }
 
 function updateWithStoragePayload(state, payload) {
-  state = { ...state } // TODO: not deep => leaky
+  state = cloneDeep(state)
 
   Object.entries(payload).forEach(([k, v]) => {
     set(state, k, v)
@@ -24,7 +27,7 @@ function updateWithStoragePayload(state, payload) {
 export default (state = initialState, action) => {
   switch (action.type) {
     case JUST_CLICK:
-      return { ...state, clicked: true }
+      return { ...cloneDeep(state), clicked: true }
     case STORAGE_INIT:
       return updateWithStoragePayload(
         { ...state, storageState: STATE_READY },

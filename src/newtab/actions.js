@@ -28,6 +28,7 @@ export const storageInit = () => {
 
     chrome.storage.sync.get({
         'clicked': false,
+        'introductionCompleted': false,
         'user.birthDate': '08-08-1980',
         'user.lifeExpectancy': 71
       },
@@ -38,19 +39,18 @@ export const storageInit = () => {
 
 export const storageUpdate = (values) => {
   return (dispatch) => {
-    chrome.storage.sync.set(values,
-      () => {
-        console.log('DONE')
-      }
-    )
+    return new Promise((resolve, reject) => {
+      chrome.storage.sync.set(values,
+        resolve())
+    })
   }
 }
 
 export const justClick = () => {
-  return (dispatch) => {
-    chrome.storage.sync.set({
-      'clicked': true
-    })
-  }
+  return storageUpdate({ clicked: true })
+}
+
+export const completeIntroduction = () => {
+  return storageUpdate({ introductionCompleted: true })
 }
 

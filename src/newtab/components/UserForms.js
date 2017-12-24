@@ -40,7 +40,10 @@ export class SimpleValueForm extends Component {
 
 export class LifeExpectancyForm extends Component {
   render() {
-    return <SimpleValueForm label="Life Expectancy" type="number" value={this.props.value} submit={this.props.submit}/>
+    return <SimpleValueForm label="Life Expectancy"
+                            type="number"
+                            value={this.props.value}
+                            submit={(x) => this.props.submit(parseInt(x))}/>
   }
 }
 
@@ -49,5 +52,3 @@ export class BirthDateForm extends Component {
     return <SimpleValueForm label="Birth Date" type="date" value={this.props.value} submit={this.props.submit}/>
   }
 }
-
-
