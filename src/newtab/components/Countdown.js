@@ -10,8 +10,6 @@ class Countdown extends Component {
   }
 
   render() {
-    console.log("RENDEEER")
-
     if (this.props.birthDate && this.props.lifeExpectancy) {
       console.log('PPP=', this.props)
 

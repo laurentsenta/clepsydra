@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { completeIntroduction, justClick, storageInit, storageUpdate } from './actions'
 import { initialUserState } from './store'
 import { BirthDateForm, LifeExpectancyForm } from "./components/UserForms"
+import WeeklyCalendar from './components/WeeklyCalendar'
 import Introduction from './components/Introduction'
 import Countdown from "./components/Countdown"
 
@@ -49,6 +50,9 @@ class AppRaw extends Component {
 
         <Countdown birthDate={this.props.user.birthDate}
                    lifeExpectancy={this.props.user.lifeExpectancy}/>
+
+        <WeeklyCalendar birthDate={this.props.user.birthDate}
+                        lifeExpectancy={this.props.user.lifeExpectancy}/>
       </div>
     );
   }

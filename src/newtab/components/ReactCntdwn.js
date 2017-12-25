@@ -72,13 +72,15 @@ export default class Countdown extends Component {
 
     const withField = (name) => {
       if (format[name]) {
+        const textualName = name.charAt(0).toUpperCase() + name.slice(1);
         const x = r.get(name)
         const x2 = leadingZero ? this.addLeadingZero(x) : x
 
         html.push(
-          <span className={`react-cntdwn-${name}`} key={name}>
-          {x2}&nbsp;
-        </span>
+          <div className={`react-cntdwn react-cntdwn-${name}`} key={name}>
+            <h3>{textualName}</h3>
+            <h2>{x2}</h2>
+          </div>
         )
       }
     }
