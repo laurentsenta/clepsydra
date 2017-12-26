@@ -30,7 +30,9 @@ export const storageInit = () => {
         'clicked': false,
         'introductionCompleted': false,
         'user.birthDate': '08-08-1980',
-        'user.lifeExpectancy': 71
+        'user.lifeExpectancy': 71,
+        'birthDateWasSet': false,
+        'lifeExpectancyWasSet': false,
       },
       (payload) => dispatch({ type: STORAGE_INIT, payload })
     )

@@ -11,7 +11,6 @@ class Countdown extends Component {
 
   render() {
     if (this.props.birthDate && this.props.lifeExpectancy) {
-      console.log('PPP=', this.props)
 
       const target = moment(this.props.birthDate, 'YYYY-MM-DD')
         .add(this.props.lifeExpectancy, 'years')

@@ -4,11 +4,16 @@ import App from './newtab/App';
 
 import { Provider } from 'react-redux'
 import store from './newtab/store'
+import LocalStorageLoader from "./newtab/LocalStorage"
 
 
 ReactDOM.render(
   <Provider store={store}>
-    <App/>
+    <div className="app">
+      <LocalStorageLoader>
+        <App/>
+      </LocalStorageLoader>
+    </div>
   </Provider>,
   document.getElementById('root')
 )

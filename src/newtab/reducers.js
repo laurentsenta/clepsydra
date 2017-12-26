@@ -3,13 +3,14 @@ import cloneDeep from 'lodash.clonedeep'
 
 import { JUST_CLICK, STORAGE_INIT } from "./actions"
 
-const STATE_VOID = 'VOID'
-const STATE_LOADING = 'LOADING'
-const STATE_READY = 'READY'
+export const STATE_VOID = 'VOID'
+export const STATE_LOADING = 'LOADING'
+export const STATE_READY = 'READY'
 
 const initialState = {
-  clicked: false,
   introductionCompleted: false,
+  birthDateWasSet: false,
+  lifeExpectancyWasSet: false,
   storageState: STATE_VOID,
   user: { lifeExpectancy: undefined, birthDate: undefined }
 }

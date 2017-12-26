@@ -53,12 +53,8 @@ class WeeklyCalendar extends Component {
       const spent = now.diff(birth, 'weeks', true)
       const remaining = target.diff(now, 'weeks', true)
 
-      console.log('WEEK=', firstWeek, 'SPENT=', spent)
-
       // 0 indexed year
       const [nowY, nowW, nowDoW] = [now.year() - birth.year(), now.week(), now.day()]
-
-      console.log(nowDoW)
 
       const colorFct = (y, w) => {
         if (y === 0 && w < firstWeek) {

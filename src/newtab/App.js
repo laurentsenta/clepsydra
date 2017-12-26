@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import './App.css';
 import merge from 'lodash.merge'
 import { connect } from 'react-redux'
-import { completeIntroduction, justClick, storageInit, storageUpdate } from './actions'
+import { completeIntroduction, justClick, storageUpdate } from './actions'
 import { initialUserState } from './store'
 import { BirthDateForm, LifeExpectancyForm } from "./components/UserForms"
 import WeeklyCalendar from './components/WeeklyCalendar'
@@ -19,65 +19,62 @@ Clicked.propTypes = {
   clicked: PropTypes.bool.isRequired
 }
 
-
 class AppRaw extends Component {
-  componentDidMount() {
-    this.props.init()
-  }
-
   render() {
-    console.log('RENDER=', this.props.user)
-
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome</h1>
-        </header>
-
-        <Clicked onClick={this.props.onClick} clicked={this.props.clicked}/>
-
-        <BirthDateForm submit={(x) => this.props.updateUser('birthDate', x)}
-                       value={this.props.user.birthDate}/>
-        <LifeExpectancyForm submit={(x) => this.props.updateUser('lifeExpectancy', x)}
-                            value={this.props.user.lifeExpectancy}/>
-
-        <p className="App-intro">
-          This is the New Tab Page
-        </p>
-
+    if (!this.props.introductionCompleted) {
+      return (
         <Introduction completed={this.props.introductionCompleted}
                       complete={this.props.completeIntroduction}/>
+      )
+    }
+    if (!this.props.birthDateSet) {
+      return (
+        <BirthDateForm submit={(x) => this.props.updateUser('birthDate', x)}
+                       value={this.props.user.birthDate}/>
+      )
+    }
+    if (!this.props.lifeExpectancySet) {
+      return (
+        <LifeExpectancyForm submit={(x) => this.props.updateUser('lifeExpectancy', x)}
+                            value={this.props.user.lifeExpectancy}/>
+      )
+    }
 
-        <Countdown birthDate={this.props.user.birthDate}
-                   lifeExpectancy={this.props.user.lifeExpectancy}/>
-
-        <WeeklyCalendar birthDate={this.props.user.birthDate}
-                        lifeExpectancy={this.props.user.lifeExpectancy}/>
+    return (
+      <div className="row">
+        <div className="col-6">
+          <WeeklyCalendar birthDate={this.props.user.birthDate}
+                          lifeExpectancy={this.props.user.lifeExpectancy}/>
+        </div>
+        <div className="col-6">
+          <Countdown birthDate={this.props.user.birthDate}
+                     lifeExpectancy={this.props.user.lifeExpectancy}/>
+        </div>
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log('MAPPING=', state)
   return {
-    clicked: state.clicked,
     introductionCompleted: state.introductionCompleted,
+    lifeExpectancySet: state.lifeExpectancyWasSet || false,
+    birthDateSet: state.birthDateWasSet || false,
     user: merge({}, initialUserState, state.user)
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    init: () => {
-      dispatch(storageInit())
-    },
     onClick: () => {
       dispatch(justClick())
     },
     updateUser: (key, value) => {
       const k = 'user.' + key
-      dispatch(storageUpdate({ [k]: value }))
+      const k2 = key + 'WasSet'
+
+      console.log("UPDATING KEY=", k, "VALUE=", value, "WITH K2=", k2)
+      dispatch(storageUpdate({ [k]: value, [k2]: true }))
     },
     completeIntroduction: () => {
       dispatch(completeIntroduction())
@@ -90,4 +87,4 @@ const App = connect(
   mapDispatchToProps
 )(AppRaw)
 
-export default App;
+export default App

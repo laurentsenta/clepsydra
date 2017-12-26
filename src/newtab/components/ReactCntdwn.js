@@ -77,7 +77,7 @@ export default class Countdown extends Component {
         const x2 = leadingZero ? this.addLeadingZero(x) : x
 
         html.push(
-          <div className={`react-cntdwn react-cntdwn-${name}`} key={name}>
+          <div className={`react-cntdwn react-cntdwn-${name} col-4`} key={name}>
             <h3>{textualName}</h3>
             <h2>{x2}</h2>
           </div>
@@ -93,7 +93,9 @@ export default class Countdown extends Component {
     withField('seconds')
     withField('milliseconds')
 
-    return html
+    return (<div className="row">
+      {html}
+    </div>)
   }
 
   render = () => {
