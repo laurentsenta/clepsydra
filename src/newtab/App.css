@@ -4,5 +4,20 @@ body {
 }
 
 .app {
-  margin-top: 5vh;
+}
+
+.vh100 {
+  min-height: 100vh;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: rgb(84, 135, 154);
+  border-color: rgb(84, 135, 154);
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: rgb(40, 75, 88);
+  border-color: rgb(40, 75, 88);
 }

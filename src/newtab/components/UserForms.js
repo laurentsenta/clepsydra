@@ -27,13 +27,27 @@ export class SimpleValueForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          {this.props.label}
-          <input type={this.props.type} value={this.state.value} onChange={this.handleChange}/>
-        </label>
-        <input type="submit" value="Submit"/>
-      </form>
+      <div className="vh100 row align-items-center justify-content-center">
+        <div className="col-12 col-md-8 col-lg-6">
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-group align-items-center">
+              <label htmlFor="field">
+                {this.props.label}
+              </label>
+
+              <input className="form-control form-control-lg"
+                     id="field"
+                     type={this.props.type}
+                     value={this.state.value}
+                     onChange={this.handleChange}/>
+            </div>
+
+            <input className="btn btn-lg btn-primary"
+                   role="button" type="submit"
+                   value="Next"/>
+          </form>
+        </div>
+      </div>
     );
   }
 }

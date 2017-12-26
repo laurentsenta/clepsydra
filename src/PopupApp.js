@@ -7,11 +7,6 @@ const NEW_TAB = 'chrome://newtab'
 
 class PopupApp extends Component {
   componentWillMount() {
-    window.addEventListener('click', (e) => {
-      if (e.target.href !== undefined) {
-        chrome.tabs.create({ url: e.target.href })
-      }
-    })
   }
 
   reset() {
@@ -22,19 +17,19 @@ class PopupApp extends Component {
 
   render() {
     return (
-      <div className="PopupApp">
-        <header className="App-header">
-          <h1 className="App-title">Welcome</h1>
+      <div id="popup" className="text-center">
+        <header className="header">
+          <h2 className="title">Clepsydra</h2>
         </header>
-        <p className="App-intro">
-          This is the Pop Up Page
+        <p className="intro text-muted">
+          You may reset the application to change your configuration:
         </p>
         <div>
-          <button onClick={() => this.reset()}>
+          <button className="btn btn-warning"
+                  onClick={() => this.reset()}>
             RESET
           </button>
         </div>
-        <a href="chrome://newtab">Boom</a>
       </div>
     );
   }

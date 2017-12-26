@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
 import './App.css';
 import merge from 'lodash.merge'
 import { connect } from 'react-redux'
@@ -9,15 +8,6 @@ import { BirthDateForm, LifeExpectancyForm } from "./components/UserForms"
 import WeeklyCalendar from './components/WeeklyCalendar'
 import Introduction from './components/Introduction'
 import Countdown from "./components/Countdown"
-
-const Clicked = ({ onClick, clicked }) => (
-  <h2 onClick={onClick}>Clicked: {clicked ? "Yes" : "No"}</h2>
-)
-
-Clicked.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  clicked: PropTypes.bool.isRequired
-}
 
 class AppRaw extends Component {
   render() {
@@ -41,7 +31,7 @@ class AppRaw extends Component {
     }
 
     return (
-      <div className="row text-center align-items-center">
+      <div className="row vh100 text-center align-items-center">
         <div className="col-12 col-md-6 order-2 order-md-1">
           <WeeklyCalendar birthDate={this.props.user.birthDate}
                           lifeExpectancy={this.props.user.lifeExpectancy}/>
