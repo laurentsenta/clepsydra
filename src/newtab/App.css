@@ -1,4 +1,8 @@
 
+body {
+  color: rgb(40, 75, 88);
+}
+
 .app {
   margin-top: 5vh;
 }

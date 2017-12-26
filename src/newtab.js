@@ -9,7 +9,7 @@ import LocalStorageLoader from "./newtab/LocalStorage"
 
 ReactDOM.render(
   <Provider store={store}>
-    <div className="app">
+    <div className="app container-fluid">
       <LocalStorageLoader>
         <App/>
       </LocalStorageLoader>

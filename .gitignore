@@ -1,5 +1,6 @@
 build.pem
 build.crx
+build.zip
 
 # dependencies
 /node_modules

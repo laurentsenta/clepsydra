@@ -1,8 +1,25 @@
+/* global chrome */
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
 import './PopupApp.css';
 
+const NEW_TAB = 'chrome://newtab'
+
 class PopupApp extends Component {
+  componentWillMount() {
+    window.addEventListener('click', (e) => {
+      if (e.target.href !== undefined) {
+        chrome.tabs.create({ url: e.target.href })
+      }
+    })
+  }
+
+  reset() {
+    chrome.storage.sync.clear(() => {
+      chrome.tabs.create({ url: NEW_TAB })
+    })
+  }
+
   render() {
     return (
       <div className="PopupApp">
@@ -12,6 +29,12 @@ class PopupApp extends Component {
         <p className="App-intro">
           This is the Pop Up Page
         </p>
+        <div>
+          <button onClick={() => this.reset()}>
+            RESET
+          </button>
+        </div>
+        <a href="chrome://newtab">Boom</a>
       </div>
     );
   }

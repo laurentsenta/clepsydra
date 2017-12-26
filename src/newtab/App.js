@@ -41,12 +41,12 @@ class AppRaw extends Component {
     }
 
     return (
-      <div className="row">
-        <div className="col-6">
+      <div className="row text-center align-items-center">
+        <div className="col-12 col-md-6 order-2 order-md-1">
           <WeeklyCalendar birthDate={this.props.user.birthDate}
                           lifeExpectancy={this.props.user.lifeExpectancy}/>
         </div>
-        <div className="col-6">
+        <div className="col-12 col-md-6 order-1 order-md-2">
           <Countdown birthDate={this.props.user.birthDate}
                      lifeExpectancy={this.props.user.lifeExpectancy}/>
         </div>

@@ -1,0 +1,15 @@
+
+.react-cntdwn {
+
+}
+
+.react-cntdwn h3 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  opacity: 0.5;
+}
+
+.react-cntdwn .item {
+  margin-bottom: 2rem;
+}
