@@ -27,10 +27,9 @@ export const storageInit = () => {
     )
 
     chrome.storage.sync.get({
-        'clicked': false,
-        'introductionCompleted': false,
         'user.birthDate': '08-08-1980',
         'user.lifeExpectancy': 71,
+        'introductionCompleted': false,
         'birthDateWasSet': false,
         'lifeExpectancyWasSet': false,
       },

@@ -2,8 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { STATE_READY } from "./reducers"
 import { storageInit } from "./actions"
+import store from './store'
 
 class LocalStorageLoaderRaw extends Component {
+  constructor() {
+    super()
+    store.dispatch(storageInit())
+  }
+
   componentDidMount() {
     this.props.init()
   }

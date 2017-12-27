@@ -15,7 +15,7 @@ class SVGYear extends Component {
           const size = this.props.size(this.props.i, x + 1, DOT_SIZE, DOT_MARGIN, DOT_TOTAL)
 
           if (size === 0) {
-            return (<span></span>)
+            return null
           }
 
           return (<rect className="week"
