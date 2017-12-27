@@ -9,6 +9,14 @@ const COUNTDOWN_NOT_STARTED = 1
 const COUNTDOWN_STARTED = 2
 const COUNTDOWN_FINISHED = 3
 
+const numberWithCommas = (x) => {
+  // https://stackoverflow.com/a/2901298/843194
+  const parts = x.toString().split(".");
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return parts.join(".");
+}
+
+
 export default class Countdown extends Component {
   constructor(props) {
     super(props)
@@ -75,8 +83,9 @@ export default class Countdown extends Component {
     const withField = (name) => {
       if (format[name]) {
         const textualName = name.charAt(0).toUpperCase() + name.slice(1);
+        //const x = r.as(name)
         const x = r.get(name)
-        const x2 = leadingZero ? this.addLeadingZero(x) : x
+        const x2 = numberWithCommas(leadingZero ? this.addLeadingZero(x) : x)
 
         html.push(
           <div className={`item react-cntdwn-${name} col-4`} key={name}>
@@ -132,7 +141,8 @@ Countdown.defaultProps = {
     days: true,
     hours: 'HH',
     minutes: 'MM',
-    seconds: 'SS'
+    seconds: 'SS',
+//    milliseconds: true,
   },
   leadingZero: false
 }
