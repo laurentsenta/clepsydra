@@ -10,18 +10,12 @@ class LocalStorageLoaderRaw extends Component {
     store.dispatch(storageInit())
   }
 
-  componentDidMount() {
-    this.props.init()
-  }
-
   render() {
     if (this.props.storageState === STATE_READY) {
       return this.props.children
     }
     else {
-      return (
-        <div>Loading</div>
-      )
+      return null
     }
   }
 }
@@ -33,11 +27,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    init: () => {
-      dispatch(storageInit())
-    },
-  }
+  return {}
 }
 
 const LocalStorageLoader = connect(
