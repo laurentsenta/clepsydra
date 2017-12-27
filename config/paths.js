@@ -45,6 +45,7 @@ module.exports = {
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
   newtabHtml: resolveApp('public/newtab.html'),
+  newtabHtmlDev: resolveApp('public/newtab.dev.html'),
   popupHtml: resolveApp('public/popup.html'),
   appIndexJs: resolveApp('src/index.js'),
   newtabJs: resolveApp('src/newtab.js'),

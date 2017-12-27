@@ -58,7 +58,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "extension": "node scripts/extension.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "package": "cp build.pem build/key.pem && zip -r build.zip build/"
   },
   "jest": {
     "collectCoverageFrom": [

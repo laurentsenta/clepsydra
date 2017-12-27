@@ -1,7 +1,7 @@
 {
   "short_name": "Clepsydra",
   "name": "Clepsydra",
-  "version": "0.1",
+  "version": "0.2.1",
   "manifest_version": 2,
   "description": "A plain text description",
   "icons": {
@@ -17,5 +17,5 @@
   "permissions": [
     "storage"
   ],
-  "content_security_policy": "script-src 'self' http://localhost:8097 http://localhost:8096/*; object-src 'self'"
+  "content_security_policy": "script-src 'self' http://localhost:8097 http://localhost:8096/* https://www.googletagmanager.com/ https://www.google-analytics.com/; object-src 'self'"
 }
