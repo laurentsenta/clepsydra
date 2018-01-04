@@ -1,31 +1,57 @@
+/* global chrome */
 import React, { Component } from 'react';
 
 class Introduction extends Component {
   render() {
+    const newTab = (e) => {
+      chrome.tabs.create({ url: "https://clepsydra.singulareva.com/life_expectancy_calculator/" })
+      e.preventDefault()
+    }
+
     return (
       <div className="row introduction vh100 justify-content-center align-items-center">
         <div className="col-12 col-md-6">
-          <h2>Welcome</h2>
           {this.props.completed ?
             (<p>see you</p>)
             :
             (
               <div>
+                <div className="text-center">
+                  <img className="img-fluid" src="/logo.png"/>
+                </div>
+
+                <h1>
+                  Welcome!
+                </h1>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ultricies convallis elementum. Nam
-                  consequat ornare augue ut posuere.
+                  Clepsydra is going to ask a few questions about your birth date and your Life Expectancy, then
+                  it'll setup itself in your New Tab page.
                 </p>
 
                 <p>
-                  Cras volutpat tincidunt ex eget congue. Donec vel erat sagittis, feugiat libero vel, scelerisque dui.
-                  Donec maximus massa massa, eget fermentum nunc varius sed. Cras tempus metus sit amet tristique
-                  interdum. Nam tempor dui odio, eu placerat est volutpat non.
+                  You can reconfigure the extension or remove it at any time by using the icon on the top right of your
+                  browser.
                 </p>
-                <button role='button'
-                        className="btn btn-primary"
-                        onClick={() => this.props.complete()}>
-                  Got it
-                </button>
+
+                <p>
+                  For now, we recommend using the following life expectancy calculator:
+                </p>
+
+                <p className="text-center">
+                  <a className="btn btn-secondary"
+                     onClick={newTab}
+                     href="https://clepsydra.singulareva.com/life_expectancy_calculator/">
+                    A Life-Expectancy Calculation
+                  </a>
+                </p>
+
+                <p className="text-center">
+                  <button role='button'
+                          className="btn btn-lg btn-primary"
+                          onClick={() => this.props.complete()}>
+                    Got it!
+                  </button>
+                </p>
               </div>
             )
           }

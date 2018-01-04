@@ -1,6 +1,6 @@
 
 body {
-  color: rgb(40, 75, 88);
+  color: #221D23;
 }
 
 .app {
@@ -12,12 +12,52 @@ body {
 
 .btn-primary {
   color: #fff;
-  background-color: rgb(84, 135, 154);
-  border-color: rgb(84, 135, 154);
+  background-color: #4B296B;
+  border-color: #4B296B;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: rgb(40, 75, 88);
-  border-color: rgb(40, 75, 88);
+  background-color: #381e4f;
+  border-color: #311b46;
+}
+
+.introduction {
+  padding-bottom: 2rem;
+}
+
+.introduction img {
+  width: 60%;
+}
+
+.hoverable {
+  position: relative;
+}
+
+.overlay-number {
+  text-align: center;
+
+  color: #4B296B;
+  font-size: 4rem;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.overlay-number span.a {
+  background-color: #4b2a6a;
+  color: #FFF;
+  display: inline-block;
+}
+
+.overlay-number span.b {
+  background-color: #4b2a6a;
+  color: #FFF;
+
+  display: inline-block;
+  position: relative;
+  top: -1rem;
 }

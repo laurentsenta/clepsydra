@@ -54,7 +54,7 @@ export class SimpleValueForm extends Component {
 
 export class LifeExpectancyForm extends Component {
   render() {
-    return <SimpleValueForm label="Life Expectancy"
+    return <SimpleValueForm label="Life Span Estimation"
                             type="number"
                             value={this.props.value}
                             submit={(x) => this.props.submit(parseInt(x))}/>

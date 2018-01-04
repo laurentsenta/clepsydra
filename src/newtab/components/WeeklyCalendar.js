@@ -38,7 +38,7 @@ class SVGCalendar extends Component {
     const totalYears = Math.ceil(totalWeeks / 52)
 
     return (
-      <svg width={52 * DOT_TOTAL + 20} height={totalYears * DOT_TOTAL}>
+      <svg width={52 * DOT_TOTAL + 20} height={totalYears * DOT_TOTAL} transform="scale(1, -1)">
         {range(totalYears).map(x =>
           <SVGYear key={x}
                    color={this.props.color}
@@ -51,10 +51,23 @@ class SVGCalendar extends Component {
   }
 }
 
+const WeekNumber = ({ spent, remaining }) => (
+  <div className="overlay-number">
+    <span className="a">Week</span>
+    <span className="b">{parseInt(spent)}&nbsp;/&nbsp;{parseInt(spent + remaining)}</span>
+  </div>
+)
+
+
 class WeeklyCalendar extends Component {
   static propTypes = {
     birthDate: PropTypes.string,
     lifeExpectancy: PropTypes.number
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = { hovering: false }
   }
 
   render() {
@@ -76,13 +89,13 @@ class WeeklyCalendar extends Component {
           return `rgba(255, 255, 255, 0)`
         }
         if (y < nowY || (y === nowY && w < nowW)) {
-          return `rgba(40, 75, 88, 1)`
+          return `rgba(75, 41, 107, 1)`
         }
         if (y === nowY && w === nowW) {
-          return `rgba(40, 75, 88, ${(nowDoW / 7) * 0.9 + 0.1})`
+          return `rgba(75, 41, 107, ${(nowDoW / 7) * 0.9 + 0.1})`
         }
         if (y > nowY || (y === nowY && w > nowW)) {
-          return `rgba(40, 75, 88, 0.1)`
+          return `rgba(75, 41, 107, 0.1)`
         }
       }
 
@@ -102,7 +115,10 @@ class WeeklyCalendar extends Component {
       }
 
       return (
-        <div>
+        <div className="hoverable"
+             onMouseEnter={() => this.onEnter()}
+             onMouseLeave={() => this.onLeave()}>
+          {this.state.hovering ? <WeekNumber spent={spent} remaining={remaining}/> : null}
           <SVGCalendar maxWeek={firstWeek + spent + remaining} color={colorFct} size={sizeFct}/>
         </div>
       )
@@ -112,6 +128,14 @@ class WeeklyCalendar extends Component {
         <h1>Calendar Not Ready</h1>
       )
     }
+  }
+
+  onEnter() {
+    this.setState({ hovering: true })
+  }
+
+  onLeave() {
+    this.setState({ hovering: false })
   }
 }
 
