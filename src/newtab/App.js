@@ -8,6 +8,7 @@ import { BirthDateForm, LifeExpectancyForm } from "./components/UserForms"
 import WeeklyCalendar from './components/WeeklyCalendar'
 import Introduction from './components/Introduction'
 import Countdown from "./components/Countdown"
+import MarkovCalendar from "./components/MarkovCalendar"
 
 class AppRaw extends Component {
   render() {
@@ -39,6 +40,7 @@ class AppRaw extends Component {
         <div className="col-12 col-md-6 order-1 order-md-2">
           <Countdown birthDate={this.props.user.birthDate}
                      lifeExpectancy={this.props.user.lifeExpectancy}/>
+          <MarkovCalendar/>
         </div>
       </div>
     )

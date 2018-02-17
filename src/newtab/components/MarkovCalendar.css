@@ -1,0 +1,34 @@
+
+.calendar .table th {
+  font-weight: 200;
+}
+
+.item-dist-2 {
+  opacity: 0.3;
+  font-size: 0.8rem;
+}
+
+.item-dist-1 {
+  opacity: 0.6;
+  font-size: 0.9rem;
+}
+
+.item-dist-0 {
+  font-weight: 400;
+}
+
+.healthy {
+  color: #4CAF50;
+}
+
+.wealthy {
+  color: #3F51B5;
+}
+
+.wise {
+  color: #9C27B0;
+}
+
+.plan {
+  color: #607D8B;
+}
