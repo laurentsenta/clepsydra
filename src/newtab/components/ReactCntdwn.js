@@ -16,6 +16,23 @@ const numberWithCommas = (x) => {
   return parts.join(".");
 }
 
+const maxFloat = (x, count = null) => {
+  if (count == null) {
+    return x;
+  }
+
+  const parts = x.toString().split(".");
+
+  if (parts.length < 2) {
+    return x;
+  }
+
+  let newP = parts[1].slice(0, count);
+  newP = newP.padEnd(count, '0')
+  parts[1] = newP;
+  return parts.join('.');
+}
+
 
 export default class Countdown extends Component {
   constructor(props) {
@@ -80,15 +97,15 @@ export default class Countdown extends Component {
     const { remainingTime } = this.state
     const r = moment.duration(remainingTime)
 
-    const withField = (name) => {
+    const withField = (name, countFloating = null) => {
       if (format[name]) {
         const textualName = name.charAt(0).toUpperCase() + name.slice(1);
-        //const x = r.as(name)
-        const x = r.get(name)
-        const x2 = numberWithCommas(leadingZero ? this.addLeadingZero(x) : x)
+        const x = r.as(name);
+        //const x = r.get(name)
+        const x2 = maxFloat(numberWithCommas(leadingZero ? this.addLeadingZero(x) : x), countFloating)
 
         html.push(
-          <div className={`item react-cntdwn-${name} col-4`} key={name}>
+          <div className={`item react-cntdwn-${name} col-12`} key={name}>
             <h3>{textualName}</h3>
             <h2>{x2}</h2>
           </div>
@@ -96,13 +113,13 @@ export default class Countdown extends Component {
       }
     }
 
-    withField('years')
-    withField('months')
-    withField('days')
-    withField('hours')
-    withField('minutes')
-    withField('seconds')
-    withField('milliseconds')
+    // withField('years')
+    // withField('months')
+    // withField('days')
+    withField('hours', 5)
+    //withField('minutes')
+    //withField('seconds')
+    //withField('milliseconds')
 
     return (<div className="react-cntdwn row align-items-center">
       {html}

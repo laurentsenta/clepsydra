@@ -53,8 +53,7 @@ class SVGCalendar extends Component {
 
 const WeekNumber = ({ spent, remaining }) => (
   <div className="overlay-number">
-    <span className="a">Week</span>
-    <span className="b">{parseInt(spent)}&nbsp;/&nbsp;{parseInt(spent + remaining)}</span>
+    <span className="b">Week {parseInt(spent)}&nbsp;/&nbsp;{parseInt(spent + remaining)}</span>
   </div>
 )
 
@@ -118,8 +117,8 @@ class WeeklyCalendar extends Component {
         <div className="hoverable"
              onMouseEnter={() => this.onEnter()}
              onMouseLeave={() => this.onLeave()}>
-          {this.state.hovering ? <WeekNumber spent={spent} remaining={remaining}/> : null}
           <SVGCalendar maxWeek={firstWeek + spent + remaining} color={colorFct} size={sizeFct}/>
+          {this.state.hovering ? <WeekNumber spent={spent} remaining={remaining}/> : null}
         </div>
       )
     }
